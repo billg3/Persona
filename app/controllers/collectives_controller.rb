@@ -1,0 +1,2 @@
+class CollectivesController < ApplicationController
+end
