@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :logins
   resources :personas, only:[:index, :show]
   resources :collectives
   resources :users

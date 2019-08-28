@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create( name: alex, email: alex@gmail.com, password:alexisgreat3 )
+User.create( name: "alex", email: "alex@gmail.com", password:"alexisgreat3" )
 
-Collective.create(name:alexander, category:legends, about: conquered the known world )
+Collective.create(name:"alexander", category:"legends", about: "conquered the known world")
 
-Persona.create(user_id: 1, collective_id: 1, connection: mind, comment: awesome, coolness: ten)
+Persona.create(user_id: 1, collective_id: 1, connection: "mind", comment: "awesome", coolness: "ten")
 
