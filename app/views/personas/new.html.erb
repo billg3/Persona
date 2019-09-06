@@ -1,0 +1,6 @@
+<h1>new persona</h1>
+<% if @persona.collective %>
+    <p>for</p>
+    <h2><%= @persona.collective.name %> </h2>
+<% end %>
+<%= render partial: 'form' %>

@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-
+    
+    skip_before_action :current_user, only: [:create]
+    skip_before_action :redirect_if_not_logged_in, only: [:new, :create]
+  
 
 
 def index 
@@ -12,17 +15,24 @@ end
     end 
 
 
-def create 
-    @user = User.new(user_params)
-if @user.save 
-    session[:user_id] = user.id 
-    redirect_to(user_path(@user))
-end 
-end 
+    def create
+        @user = User.create(user_params)
+        if @user.save
+          session[:user_id] = @user.id
+          flash[:msg] = "Welcome "
+          redirect_to root_path
+        else
+          render :new
+        end
+      end
+    
+
+
 
 def show 
 
     @user = User.find(params[:id])
+
     end 
 
 
@@ -36,9 +46,9 @@ params.require(:user).permit(:name, :email, :password)
     end 
 
 
-    def require_login 
-        redirect_to root_path unless session.include? :user_id 
+#     def require_login 
+#         redirect_to root_path unless session.include? :user_id 
 
-end
+# end
 end 
 

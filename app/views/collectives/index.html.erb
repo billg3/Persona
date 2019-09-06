@@ -1,0 +1,22 @@
+<h1>Collective</h1>
+<ul class="list-group">
+  <% @collectives.each do |collective| %>
+  <li class="list-group-item"> <%= collective.average_rating %><%= link_to collective_name(collective), collective_path(collective) %> </li>
+  <% end %>
+</ul>
+
+  <div class="sort-form">
+    <%= form_tag '/filter' do %>
+        <label>Sort by:</label>
+        <%= select_tag "filter", "<option>Popularity</option>".html_safe, include_blank: true %>
+        <%= submit_tag "Submit" %>
+      <% end %>
+  </div>
+<br>
+<p> <%= link_to "Add a new collective", new_collective_path, class: "btn btn-primary" %> </p>
+
+<%= form_tag '/category_filter', method: :get do %>
+      <label>filter by category:</label>
+      <%= select_tag "category", options_from_collection_for_select(collective.all.uniq{| collective | collective.category}, "category", "category") %>
+      <%= submit_tag "Submit" %>
+    <% end %>

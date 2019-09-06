@@ -1,37 +1,78 @@
 class SessionsController < ApplicationController
 
 
-
-def new 
-    @user = User.new 
-    end 
+        # # skip_before_action :current_user, only: [:create]
+        skip_before_action :redirect_if_not_logged_in, only: [:new, :create]
     
-    def create 
-    @user = User.find_by(name: params[:name])
-    if @user&.authenticate(params[:password])
-    session[user.id] = user.id 
-    redirect_to user_path(@user)
+      def new
+        @user = User.new
+      end
     
-    end 
-    end 
+      def create
+        if auth_hash = request.env["omniauth.auth"]
+          @user = User.find_or_create_by_omniauth(auth_hash)
+          session[:user_id] = @user.id
     
+          redirect_to @user
+        else
+          @user = User.find_by(email: params[:user][:email])
+            if @user && @user.authenticate(params[:user][:password])
     
-    def destroy 
-    reset_session
-    redirect_to root_path
+                session[:user_id] = @user.id
     
-    end 
+                redirect_to @user
+            else
+                flash[:message] = "Your email or password were incorrect."
+                redirect_to signin_path
+            end
+        end
+      end
     
+      def destroy
+           session.delete :user_id
     
-    private 
+           redirect_to root_path
+       end
     
-    def user_params 
-    params.require(:user).permit(:name, :email, :password)
-    end 
+       private
     
-    
-    
+       def auth
+         request.env['omniauth.auth']
+       end
     
     end
     
-end
+
+# def new 
+#     @user = User.new 
+#     end 
+    
+#     def create 
+#     @user = User.find_by(name: params[:name])
+#     if @user&.authenticate(params[:password])
+#     session[user.id] = user.id 
+#     redirect_to user_path(@user)
+    
+#     end 
+#     end 
+    
+    
+#     def destroy 
+#     reset_session
+#     redirect_to root_path
+    
+#     end 
+    
+    
+#     private 
+    
+#     def user_params 
+#     params.require(:user).permit(:name, :email, :password)
+#     end 
+    
+    
+    
+    
+#     end
+    
+

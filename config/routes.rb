@@ -1,16 +1,27 @@
 Rails.application.routes.draw do
-  root "application#home"
-
-  get '/signin', to: "sessions#new"
-  post "/sessions/create", to: "sessions#create"
-  delete "/signout", to: "sessions#destroy"
-
-  resources :users
-  resources :collectives
-  resources :personas
-
-
-
-
-
-end 
+  
+    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    resources :collectives do
+      resources :personas
+    end
+  
+    resources :personas
+  
+    resources :users, only: [:new, :create, :show]
+  
+  
+    root 'welcome#home'
+  
+      get '/signin' => 'sessions#new'
+      post '/signin' => 'sessions#create'
+      post '/signout' => 'sessions#destroy'
+      delete "/signout", to: "sessions#destroy"
+  
+      get '/auth/github/callback' => 'sessions#create'
+  
+      post '/filter' => "collectives#filter"
+  
+      get '/category_filter' => 'collectives#category_filter'
+  
+  end
+  

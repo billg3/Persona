@@ -1,5 +1,30 @@
-<%= form_for(@user, url: :sessions_create) do |f| %>
-  <%= f.label :name %><%= f.select :name, @users.map { |u| u.name } %>
-  <%= f.label :password %><%= f.password_field :password, name: "password" %>
-  <%= f.submit "Sign In" %>
-<% end %>
+<h1>Sign into Persona</h1>
+
+<div class="form-horizontal">
+  <%= form_for :user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
+
+  <div class="form-group"> 
+    <%= f.label :email, class: "col-md-4 control-label" %>
+    <div class="col-md-4">
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+  </div> 
+
+  <div class="form-group"> 
+    <%= f.label :password, class: "col-md-4 control-label" %>
+    <div class="col-md-4">
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
+  </div> 
+
+  <div>
+    <%= f.submit "Sign in" %>
+  </div>
+  <% end %>
+
+
+<%# 
+<p>or</p>
+ <div class="github-button">
+  <%= login_with_github %>
+  <%# </div> %>

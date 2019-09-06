@@ -1,0 +1,40 @@
+<% if @persona.errors.any? %>
+  <div class="notice alert-warning">
+      <p>There were some errors:</p>
+      <br>
+        <% @persona.errors.full_messages.each do |message| %>
+          <p><%= message %></p>
+        <% end %>
+    </div>
+<% end %>
+<br>
+  <div class="form-horizontal">
+  <%= form_for [@persona] do |f| %>
+
+   
+    <div class="form-group">  
+      <%= f.label :stars, class: "col-md-4 control-label" %>
+       <div class="col-md-4">
+        <%= f.select :stars, [[1], [2], [3], [4], [5]], class: "form-control" %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label "connection", class: "col-md-4 control-label" %>
+      <div class="col-md-4"> 
+        <%= f.text_area :connection, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :comments, class: "col-md-4 control-label" %>
+      <div class="col-md-4"> 
+        <%= f.text_area :comment, class: "form-control" %>
+      </div>
+    </div>
+
+    <div>
+      <%= f.submit %>
+    </div>
+<% end %>
+</div>

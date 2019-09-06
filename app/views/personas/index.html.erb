@@ -1,0 +1,21 @@
+<% if params[:collective_id] %>
+  <h1><%= @personas.first.collective.name %></h1>
+  <% else %>
+  <h1>personas</h1>
+  <% end %>
+
+<ul class="list-group">
+  <% @personas.each do |persona| %>
+    <li class="list-group-item"> <% if !params[:collective_id] %><%= list_with_names persona %> <% end %><br>
+      persona: <%= show_stars(persona.stars) %> <br>
+       User: <%=  persona.user.name %>
+     <br> <%= link_to "Read the review", collective_persona_path(persona.collective, persona) %></li>
+    <% end %>
+    </ul>
+    <br>
+
+    <% if params[:collective_id] %>
+        <p><%= link_to "New persona", new_collective_persona_path(params[:collective_id]), class: "btn btn-primary" %></p>
+      <% else %>
+        <p> <%= link_to "Add a new persona", new_persona_path, class: "btn btn-primary" %> </p>
+      <% end %>

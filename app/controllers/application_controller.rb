@@ -1,18 +1,48 @@
 class ApplicationController < ActionController::Base
 
-
-    protect_from_forgery with: :exception
-  helper_method :current_user
-
-  def home
-  end
-
-  private
+  before_action :current_user
+  before_action :redirect_if_not_logged_in
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    end
+      helper_method :current_user
+
+  def logged_in?
+    session[:user_id]
   end
+
+  def redirect_if_not_logged_in
+    if !logged_in?
+      redirect_to root_path
+    end
+  end
+
 end
 
+#     protect_from_forgery with: :exception
+#   helper_method :current_user
 
-end
+
+
+
+# toggle ------------>
+
+#   def home
+#     @user = User.find(session[:user_id])
+#  end
+
+
+
+
+
+
+
+#   private
+
+#   def current_user
+#     @current_user ||= User.find(session[:user_id]) if session[:user_id]
+#   end
+
+
+
