@@ -1,24 +1,19 @@
 <%= link_to "Back ", collectives_path %>
-<h1><%= collective_name(@collective) %></h1>
+
 <br>
 <div class="list-group"> 
   <p class="list-group-item"><b>name:</b> <%= @collective.name%></p>
   <p class="list-group-item"><b>about:</b> <%= @collective.about %></p>
   <p class="list-group-item"><b>category:</b> <%= @collective.category %></p>
-  
-  <%# <% if @collective.region %>
-  <%# <p class="list-group-item"><b>Region:</b> <%= @collective.region %>
-  <%# </p> %> 
-  
+
+
+  <% if @collective.about %>
+  <p class="list-group-item"><b>about:</b> <%= @collective.about %></p>
   <% end %>
-  <p class="list-group-item"><b>Average Rating:</b> <%= show_stars(@collective.average_rating) %>  </p><br>
-</div>
-<% if !@collective.ratings.empty? %>
-  <h3><%= link_to "Read reviews", collective_ratings_path(@collective) %></h3>
-  <% end %>
+  
 <br>
   <% if !@collective.users.include?(current_user) %>
-    <p><%= link_to "Add a review", new_collective_rating_path(@collective), class: "form-group btn btn-primary" %></p>
+    <p><%= link_to "Add a review", new_collective_persona_path(@collective), class: "form-group btn btn-primary" %></p>
   <% end %>
 <% if @collective.creator_id == current_user.id %>
   <%= link_to "Edit this collective", edit_collective_path %>

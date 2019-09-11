@@ -7,13 +7,36 @@
 
 <h1><%= @current_user.name %></h1>
 
-
+<%# 
 <div class="list-group"> 
+
   <h3>Your reviews:</h3>
     <% @current_user.personas.each do |r| %>
-      <h4 class="list-group-item"><%= link_to collective_name(r.collective), wine_rating_path(r.collective, r.id) %> - <%= show_stars(r.stars) %></h4>
-    <% end %>
-</div>
+      <%# <h4 class="list-group-item"><%= link_to collective_path(r.collective), collective_persona_path(r.collective, r.id)
+       - <%= persona_path(r.stars) %>
+    <%# <% end %>
+<%# </div> %>
+
+
+<p>
+  <strong>Reviews:</strong>
+  <ul>
+      <% @user.personas.each do |review| %>
+    <li>
+
+<%# <% binding.pry %>
+
+      <%# <%= link_to review.comment, review %>
+      <%= link_to review.collective.name, review %> has <%= review.stars %> stars 
+      <%# <%= button_to "Edit Comment", edit_persona_path %> 
+      <%# <%= button_to "Delete Comment", destroy_persona_path %>
+    </li>
+  </ul>
+  <% end %>
+
+</p>
+
+
 <br>
 <p> <%= link_to "Add a new individual to the collective", new_collective_path, class: "btn btn-primary" %> </p>
 <p> <%= link_to "Review a new persona", new_persona_path, class: "btn btn-primary" %> </p

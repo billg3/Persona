@@ -3,11 +3,12 @@ class PersonasController < ApplicationController
   
   before_action :find_persona, only: [:show, :edit, :update]
 
+  
   def index
     if params[:collective_id]
       @personas = Collective.find(params[:collective_id]).personas
     else
-      @personas = persona.all
+      @personas = Persona.all
     end
   end
 
@@ -41,7 +42,7 @@ class PersonasController < ApplicationController
   end
 
   def edit
-    @collective = collective.find_by(id: params[:collective_id])
+    @collective = Collective.find_by(id: params[:collective_id])
     
     if @persona.user_id != current_user.id
       redirect_to collectives_path
@@ -54,6 +55,18 @@ class PersonasController < ApplicationController
     redirect_to collective_persona_path(@persona.collective, @persona)
   end
 
+
+  def destroy
+  
+    @persona = Persona.find_by(id: params[:id])
+    @persona.destroy
+
+      redirect_to collectives_path
+
+    end
+  
+
+
 private
 
   def persona_params
@@ -61,12 +74,12 @@ private
   end
 
   def find_persona
-    @persona = persona.find_by(id: params[:id])
+    @persona = Persona.find_by(id: params[:id])
   end
 
+  
 
-end
-
+end 
 
 
 

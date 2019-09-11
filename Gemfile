@@ -29,8 +29,10 @@ gem 'jbuilder', '~> 2.5'
  gem 'bcrypt', '~> 3.1.7'
 
  gem 'omniauth'
- gem 'omniauth-github'
+ gem 'oauth' 
+gem 'oauth2'
  gem 'dotenv-rails'
+ gem 'omniauth-facebook'
 
 
 # Use bootstrap
@@ -44,7 +46,11 @@ gem 'jbuilder', '~> 2.5'
 
  gem 'font-awesome-rails'
 
+gem 'pry'
 
+gem "espeak-ruby", require: "espeak"
+
+gem 'tts'
 
 
 # Use ActiveStorage variant

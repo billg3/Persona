@@ -1,10 +1,16 @@
-<h1> <%= collective_name(@persona.collective) %> </h1>
-<h2>Review by: <%= @persona.user.name %></h2>
-<h2> <%= show_stars(@persona.stars) %> </h2>
+<%# <h1> <%= collective_path(@persona.collective) %> </h1>
+<%# <h2>Review by: <%= @persona.user.name %></h2> 
+<%# <h2> <%= collective_path(@persona.stars) %> </h2>
+<%# <% binding.pry %>  
+<%= %>
+<h1><%= @persona.collective.name %> </h2>
+ <%= @persona.stars %> stars 
+
+
 <h3>Comments: </h3>
-<p><%= @persona.comments %></p>
-<h3>about: </h3>
-<p><%= @persona.about %></p>
+<p><%= @persona.comment %></p>
+<h3>connection: </h3>
+<p><%= @persona.connection %></p>
 <% if current_user == @persona.user %>
   <%= link_to "Edit Review", edit_collective_persona_path(@persona.collective, @persona) if @persona.collective %>
 <% end %>

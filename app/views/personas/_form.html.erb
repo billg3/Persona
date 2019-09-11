@@ -9,13 +9,27 @@
 <% end %>
 <br>
   <div class="form-horizontal">
-  <%= form_for [@persona] do |f| %>
+  <%= form_for @persona do |f| %>
 
-   
+        <div>
+         
+         
+        
+ <%= f.hidden_field :user_id, :value => current_user.id%>
+
+  
     <div class="form-group">  
       <%= f.label :stars, class: "col-md-4 control-label" %>
        <div class="col-md-4">
         <%= f.select :stars, [[1], [2], [3], [4], [5]], class: "form-control" %>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <%= f.label "the person from the collective you will add to your persona", class: "col-md-4 control-label" %>
+      <div class="col-md-4"> 
+        <%= f.collection_select(:collective_id, Collective.all.order('name'), :id, :name ) %><br><br>
       </div>
     </div>
     
@@ -31,6 +45,11 @@
       <div class="col-md-4"> 
         <%= f.text_area :comment, class: "form-control" %>
       </div>
+    </div>
+
+
+    <div>
+    <%= link_to 'Destroy', @persona, method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
 
     <div>

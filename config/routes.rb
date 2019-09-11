@@ -17,7 +17,9 @@ Rails.application.routes.draw do
       post '/signout' => 'sessions#destroy'
       delete "/signout", to: "sessions#destroy"
   
-      get '/auth/github/callback' => 'sessions#create'
+      get '/search' => 'pages#search', :as => 'search_page'
+
+      get '/auth/facebook/callback' => 'sessions#create'
   
       post '/filter' => "collectives#filter"
   

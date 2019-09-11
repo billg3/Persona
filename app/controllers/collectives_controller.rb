@@ -1,9 +1,15 @@
 class CollectivesController < ApplicationController
    
         def index
-          @collectives= Collective.all
+          @collectives = Collective.all
         end
       
+
+        # def index
+        #   @projects = Collective.search(params[:search])
+        # end
+
+
   def show
     @collective = Collective.find_by(id: params[:id])
   end
@@ -18,7 +24,7 @@ class CollectivesController < ApplicationController
     if @collective.valid?
       @collective.name = @collective.full_name
       @collective.save
-      redirect_to @collective.full_name
+      redirect_to @collective
     else
       render :new
     end

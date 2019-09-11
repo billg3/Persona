@@ -6,8 +6,8 @@
 
 <ul class="list-group">
   <% @personas.each do |persona| %>
-    <li class="list-group-item"> <% if !params[:collective_id] %><%= list_with_names persona %> <% end %><br>
-      persona: <%= show_stars(persona.stars) %> <br>
+
+      persona: <%= persona.stars%> <br>
        User: <%=  persona.user.name %>
      <br> <%= link_to "Read the review", collective_persona_path(persona.collective, persona) %></li>
     <% end %>
