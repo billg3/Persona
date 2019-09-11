@@ -23,6 +23,7 @@ class SessionsController < ApplicationController
       #     u.name = auth['info']['name']
       #     u.email = auth['info']['email']
         
+      #  binding.pry 
        
         if auth_hash = request.env["omniauth.auth"]
           @user = User.find_or_create_by_omniauth(auth_hash)

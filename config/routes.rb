@@ -20,6 +20,8 @@ Rails.application.routes.draw do
       get '/search' => 'pages#search', :as => 'search_page'
 
       get '/auth/facebook/callback' => 'sessions#create'
+
+      # get '/auth/facebook' => 
   
       post '/filter' => "collectives#filter"
   
