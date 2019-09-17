@@ -2,14 +2,13 @@
 
 
 
+<% string = @current_user.name%>
 
-
-
-<h1><%= @current_user.name.upcase %></h1>
+<h1><%= string.slice(0,1).capitalize + string.slice(1..-1)%></h1>
 
 
 <p>
-  <strong>Reviews:</strong>
+  <strong>Persona:</strong>
  <div>
   <% @user.personas.each do |review| %>
   <%= link_to review.collective.name, review %> has <%= review.stars %> stars 

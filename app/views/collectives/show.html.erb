@@ -11,7 +11,7 @@
   
 <br>
   <% if !@collective.users.include?(current_user) %>
-    <p><%= link_to "Add a review", new_collective_persona_path(@collective), class: "form-group btn btn-primary" %></p>
+    <p><%= link_to "Add to your persona", new_collective_persona_path(@collective), class: "form-group btn btn-primary" %></p>
   <% end %>
 <% if @collective.creator_id == current_user.id %>
   <%= link_to "Edit this collective", edit_collective_path %>
