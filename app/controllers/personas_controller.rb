@@ -3,6 +3,8 @@ class PersonasController < ApplicationController
   
   before_action :find_persona, only: [:show, :edit, :update]
 
+
+
   
   def index
     if params[:collective_id]
@@ -10,10 +12,28 @@ class PersonasController < ApplicationController
     else
       @personas = Persona.all
     end
+   
+
+
   end
 
   def show
+    if params[:id]
+    @persona = Persona.find(params[:id])
+    else 
+      @persona = Persona.all
   end
+end
+
+
+  def popular 
+
+@personas = Persona.pop
+
+
+  end 
+
+
 
   def new
     if params[:collective_id] && !Collective.exists?(params[:collective_id])
@@ -70,7 +90,7 @@ class PersonasController < ApplicationController
 private
 
   def persona_params
-    params.require(:persona).permit(:stars, :taste, :comments, :collective_id, :user_id)
+    params.require(:persona).permit(:stars, :connection, :comment, :collective_id, :user_id)
   end
 
   def find_persona

@@ -7,9 +7,7 @@
   <p class="list-group-item"><b>category:</b> <%= @collective.category %></p>
 
 
-  <% if @collective.about %>
-  <p class="list-group-item"><b>about:</b> <%= @collective.about %></p>
-  <% end %>
+  
   
 <br>
   <% if !@collective.users.include?(current_user) %>

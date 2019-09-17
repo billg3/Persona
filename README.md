@@ -1,26 +1,14 @@
 # README
 
-<h3>This web app is my original intelligent property </h3>
 
-This README documents whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+This README documents steps to run the app 
 
-* Ruby version
 
-* System dependencies
+please clone repo 
+run rails s
+build your persona
 
-* Configuration
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<h3>This web app is my original intelligent property thanks</h3>

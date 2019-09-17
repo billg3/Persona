@@ -14,8 +14,48 @@
     </ul>
     <br>
 
+
+    
+<div class="sort-form">
+    <%= form_tag '/filter' do %>
+        <label>Sort by:</label>
+        <%= select_tag "filter", "<option>Popularity</option>".html_safe, include_blank: true %>
+        <%= submit_tag "Submit" %>
+      <% end %>
+  </div>
+<br>
+
+
+
+<%# 
+ # “Add a filter to the personas %>
+      <%# # index page so that a user can filter the personas by rating.
+      #  For example, a user should be able to choose a number of stars and only see personas with that number of stars”
+      %>
+  
+
+
+
+<%# 
+<p>
+    <% @persona_comments.each do |persona| %>
+
+      <%# persona with comments: <%= persona.comment%>  
+
+    <%# <% end %>
+    <%# </ul> %>
+    <%# <br> %> 
+
+
+</p>
     <% if params[:collective_id] %>
         <p><%= link_to "New persona", new_collective_persona_path(params[:collective_id]), class: "btn btn-primary" %></p>
       <% else %>
         <p> <%= link_to "Add a new persona", new_persona_path, class: "btn btn-primary" %> </p>
       <% end %>
+
+      <%# <p> <%link_to "colletives", collective_path, class: "btn btn-primary" %>
+
+
+
+<%# <%= link_to 'Persona filter , patient_path(@patient) %>

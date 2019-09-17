@@ -2,9 +2,11 @@
 <%# <h2>Review by: <%= @persona.user.name %></h2> 
 <%# <h2> <%= collective_path(@persona.stars) %> </h2>
 <%# <% binding.pry %>  
-<%= %>
+
+<%= @persona.stars %> stars 
+
 <h1><%= @persona.collective.name %> </h2>
- <%= @persona.stars %> stars 
+ 
 
 
 <h3>Comments: </h3>
@@ -14,3 +16,6 @@
 <% if current_user == @persona.user %>
   <%= link_to "Edit Review", edit_collective_persona_path(@persona.collective, @persona) if @persona.collective %>
 <% end %>
+
+<br><br/>
+<%= link_to "Home", user_path(current_user)%>

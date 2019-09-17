@@ -2,21 +2,16 @@
 
 
 
-<%= form_with(url: @collectives.name, method: "get") do %>
-  <%= label_tag(:q, "") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
-<% end %>
-
-
+<%= link_to "Back ", user_path(current_user)%>
 
 
 <ul class="list-group">
   <% @collectives.each do |collective| %>
-  <li class="list-group-item"> <%= collective.name%><%= link_to collective.name, collective_path(collective) %> </li>
+  <li class="list-group-item"> <%= link_to collective.name, collective_path(collective) %> </li>
   <% end %>
 </ul>
 
+<p> <%= link_to "Add a new individual to the collective", new_collective_path, class: "btn btn-primary" %> </p>
 
   <div class="sort-form">
     <%= form_tag '/filter' do %>
@@ -26,10 +21,11 @@
       <% end %>
   </div>
 <br>
-<p> <%= link_to "Add a new collective", new_collective_path, class: "btn btn-primary" %> </p>
 
 <%= form_tag '/category_filter', method: :get do %>
       <label>filter by category:</label>
       <%= select_tag "category", options_from_collection_for_select(Collective.all.uniq{| collective | collective.category}, "category", "category") %>
       <%= submit_tag "Submit" %>
     <% end %>
+
+

@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   
+
+  get '/personas/popular' => 'personas#popular', as: 'popular'
+
+
+
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     resources :collectives do
       resources :personas
@@ -26,6 +31,7 @@ Rails.application.routes.draw do
       post '/filter' => "collectives#filter"
   
       get '/category_filter' => 'collectives#category_filter'
-  
+
+     
   end
   

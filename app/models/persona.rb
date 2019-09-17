@@ -1,10 +1,13 @@
 class Persona < ApplicationRecord
 
-    scope :created,               -> { where(created: true) }
-  scope :created_and_commented, -> { created.where("comments_count > 0") }
+    scope :pop, -> { where("stars > 3" ) }
+
+  # scope :created_and_commented, -> { created.where("comment > 0") }
+  
+ scope :pop_and_c, -> { pop.where.not(comment: nil )}
 
 
- 
+
     belongs_to :user
     belongs_to :collective
 
@@ -13,6 +16,7 @@ class Persona < ApplicationRecord
         
         validates :stars, presence: true
 
+#validate the numericality
 
         
 end
