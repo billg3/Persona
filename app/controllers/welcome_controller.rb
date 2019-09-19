@@ -4,10 +4,10 @@ class WelcomeController < ApplicationController
     def home
       if session[:user_id]
         @user = User.find(session[:user_id])
-        speech = ESpeak::Speech.new("welcome to persona!") 
+  
     end
   
   end
 end 
 
-  
+ 

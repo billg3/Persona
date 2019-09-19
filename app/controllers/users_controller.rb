@@ -25,12 +25,7 @@ end
           render :new
         end
       end
-    
-
-
-
-    
-
+  
 
 def show 
 
@@ -49,9 +44,6 @@ params.require(:user).permit(:name, :email, :password)
     end 
 
 
-#     def require_login 
-#         redirect_to root_path unless session.include? :user_id 
 
-# end
 end 
 

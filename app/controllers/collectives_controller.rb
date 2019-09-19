@@ -5,9 +5,6 @@ class CollectivesController < ApplicationController
   end
 
 
-  # def index
-  #   @projects = Collective.search(params[:search])
-  # end
 
 
 def show
@@ -20,10 +17,9 @@ end
 
 def create
 @collective = Collective.find_or_create_by(collective_params)
-#  @collective.creator_id = current_user.id
+
 if @collective.valid?
-# @collective.name = @collective.full_name
-# @collective.save
+
 redirect_to @collective
 else
 render :new

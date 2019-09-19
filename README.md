@@ -5,10 +5,15 @@
 This README documents steps to run the app 
 
 
-please clone repo 
-run rails s
-build your persona
+Please clone repo 
+Run rails s
+Create an account
+See the collective 
+Build your persona
 
 
 
-<h3>This web app is my original intelligent property thanks</h3>
+
+This web app is my original intellectual property
+FBI Anti-Piracy Warning
+Thanks
