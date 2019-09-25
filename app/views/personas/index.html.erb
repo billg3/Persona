@@ -7,8 +7,9 @@
 <ul class="list-group">
   <% @personas.each do |persona| %>
 
-      persona: <%= persona.stars%> <br>
+      pname: <%= persona.collective.name%> <br>
        User: <%=  persona.user.name %>
+       persona: <%= persona.stars%> 
      <br> <%= link_to "Read the review", collective_persona_path(persona.collective, persona) %></li>
     <% end %>
     </ul>
@@ -36,3 +37,8 @@
       <% end %>
 
     
+
+
+
+
+    <%= link_to "popular", popular_path(@persona) %>

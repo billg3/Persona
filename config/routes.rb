@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get '/users/most' => 'users#most', as: 'most'
 
   get '/personas/popular' => 'personas#popular', as: 'popular'
 

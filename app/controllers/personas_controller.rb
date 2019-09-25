@@ -12,6 +12,7 @@ class PersonasController < ApplicationController
     else
       @personas = Persona.all
     end
+    @persona_pop = Persona.pop
   end
 
   def show

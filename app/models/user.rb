@@ -2,8 +2,12 @@ class User < ApplicationRecord
   has_many :personas
   has_many :collectives, through: :personas
 
-  has_secure_password
+  scope :most, -> {joins(:personas).group(:user_id).order("count(user_id) DESC").first}
 
+# psuedocode - join to the table, group object by their id, order by whose count of user_id's is the highest, and select the first 
+
+
+  has_secure_password
 
 
 validates :email, presence: true, uniqueness: true

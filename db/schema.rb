@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2019_09_07_160137) do
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
   end
+  #delete this table
 
   create_table "users", force: :cascade do |t|
     t.string "name"

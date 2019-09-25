@@ -27,6 +27,12 @@ end
       end
   
 
+
+def most 
+  @user = User.most 
+end 
+
+
 def show 
 
     @user = User.find(params[:id])
