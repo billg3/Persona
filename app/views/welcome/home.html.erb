@@ -1,31 +1,78 @@
-<div>
-<h1>Persona</h1>
-</div>
+<div class="morning-app">
+  <header class="hero">
+    <p class="eyebrow">Morning in Manhattan</p>
+    <h1>Persona Morning Social</h1>
+    <p class="hero-copy">
+      Start your day with skyline energy, hop into a Zoom room with other early risers,
+      and let your AI conversation coach suggest what to ask next.
+    </p>
 
+    <div class="hero-actions">
+      <%= link_to "Log in", signin_path, class: "btn btn-primary" %>
+      <%= link_to "Create an account", new_user_path, class: "btn btn-outline" %>
+      <a href="https://zoom.us/start/videomeeting" target="_blank" rel="noopener" class="btn btn-ghost">
+        Launch Zoom
+      </a>
+    </div>
+  </header>
 
-<div style="width: 400px; height: 450px; overflow: hidden">
-  <img src="https://static.wixstatic.com/media/7d9915_dcecb30440654a9385dd09c3e15734d1~mv2.jpg/v1/fill/w_560,h_712,al_c,q_90,usm_0.66_1.00_0.01/7d9915_dcecb30440654a9385dd09c3e15734d1~mv2.webp"  width="400" height="450">
-</div>
+  <section class="main-grid">
+    <article class="panel skyline-panel">
+      <h2>Manhattan Morning Feed</h2>
+      <p>See who is currently online and ready for a coffee chat.</p>
 
+      <ul class="peer-list">
+        <li>
+          <strong>Noah</strong>
+          <span>Financial District • 8:05 AM</span>
+          <button type="button" class="connect-btn" data-peer="Noah">Connect</button>
+        </li>
+        <li>
+          <strong>Ava</strong>
+          <span>Chelsea • 8:12 AM</span>
+          <button type="button" class="connect-btn" data-peer="Ava">Connect</button>
+        </li>
+        <li>
+          <strong>Mateo</strong>
+          <span>Upper West Side • 8:16 AM</span>
+          <button type="button" class="connect-btn" data-peer="Mateo">Connect</button>
+        </li>
+      </ul>
 
+      <p class="status" id="connectionStatus" aria-live="polite">Pick someone to open a Zoom session.</p>
+    </article>
 
-<h2>Virtual Identity Matrix </h2>
+    <article class="panel zoom-panel">
+      <h2>Zoom Lounge</h2>
+      <p class="zoom-subtitle">Embedded access + quick join links for your morning meetings.</p>
 
-<br><br/>
+      <div class="zoom-shell">
+        <p id="zoomRoomName">Morning Manhattan Room</p>
+        <a href="https://zoom.us/join" target="_blank" rel="noopener" class="btn btn-primary">Join via Zoom</a>
+      </div>
 
+      <div class="transcript-box">
+        <label for="zoomTranscript">Live transcript listener</label>
+        <textarea id="zoomTranscript" rows="4" placeholder="Type or dictate what is being said in Zoom..."></textarea>
+        <div class="transcript-actions">
+          <button type="button" class="btn btn-outline" id="simulateTranscript">Simulate Zoom transcript</button>
+          <button type="button" class="btn btn-ghost" id="startListening">Mic listen (browser)</button>
+        </div>
+      </div>
+    </article>
 
-<p><%= link_to "Log in", signin_path %>  <br> <br/>   <%= link_to "Create an account", new_user_path %>   <i></i> </p>
+    <article class="panel ai-panel">
+      <h2>AI Conversation Agent</h2>
+      <p>
+        The agent listens to your Zoom transcript and recommends smart follow-up prompts
+        to keep the conversation flowing.
+      </p>
 
+      <div class="agent-chat" id="agentChat" aria-live="polite">
+        <p class="agent-message">👋 I’m listening. Share a transcript snippet and I’ll suggest your next line.</p>
+      </div>
 
-
-
-  ###<%= link_to(' Sign in with omniauth', '/auth/facebook') %>
-
-<br> <br/> 
-  <br> <br/> 
-  <br> <br/> 
-<h3>Made -  © 2019</h3>
-<div>
-<p> <%= speech = ESpeak::Speech.new(" welcome to persona ")
-speech.speak%></p>
+      <button type="button" class="btn btn-primary" id="recommendPrompt">Recommend next question</button>
+    </article>
+  </section>
 </div>
